@@ -3,5 +3,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     get '/things', to:'things#index'
+    resources :patients
+    resources :doctors
+    resources :appointments
   end 
 end
