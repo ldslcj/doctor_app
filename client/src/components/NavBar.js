@@ -16,6 +16,16 @@ const Navbar = () => {
         onClick={() => history.push('/')}
       />
       <Menu.Item
+        active={pathname === '/doctors'}
+        content='Doctors'
+        onClick={() => history.push('/doctors')}
+      />
+      <Menu.Item
+        active={pathname === '/patients'}
+        content='Patients'
+        onClick={() => history.push('/patients')}
+      />
+      <Menu.Item
         active={pathname === '/appointments'}
         content='Appointments'
         onClick={() => history.push('/appointments')}
@@ -25,11 +35,11 @@ const Navbar = () => {
         content='New Appt'
         onClick={() => history.push('/appointments/new')}
       />
-      <Menu.Item
+      <Menu.Item>
         active={pathname === '/examples'}
         content='Examples'
         onClick={() => history.push('/examples')}
-      />
+      </Menu.Item>
 
 
     </Menu>

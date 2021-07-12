@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import { Button, Dropdown, Form } from 'semantic-ui-react'
+import { Button, Container, Dropdown, Form } from 'semantic-ui-react'
 import {
     DateTimeInput,
   } from 'semantic-ui-calendar-react';
@@ -64,7 +64,7 @@ const AppointmentForm = (props) => {
         setDateTime(value)
     }
     return (
-        <div>
+        <Cont>
             <h1>AppointmentForm</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group widths='equal'>
@@ -106,7 +106,7 @@ const AppointmentForm = (props) => {
                 </Form.Group>
                 <Button type='submit'>Submit</Button>
             </Form>
-        </div>
+        </Cont>
     )
 }
 

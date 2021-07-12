@@ -1,12 +1,30 @@
+import axios from 'axios'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Icon, Table } from 'semantic-ui-react'
+import { Button, Icon, Table } from 'semantic-ui-react'
 import useAxiosOnMount from '../customHooks/useAxiosOnMount'
 
 const Appointments = () => {
-    const { data, loading, error } = useAxiosOnMount('/api/appointments')
+    const { data, loading, error, setData } = useAxiosOnMount('/api/appointments')
+
+    const deleteAppointment = async (id) => {
+        try{ console.log('delete try')
+        console.log(id)
+            await axios.delete(
+                `/api/appointments/${id}`
+            ) 
+            filterAppointments(id)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const filterAppointments = (id) => {
+        setData(data.filter((d) => d.id !== id))
+      }
 
     const renderData = () => {
+
         return (
             <Table singleLine>
                 <Table.Header>
@@ -36,7 +54,11 @@ const Appointments = () => {
                                        date: d.date,
                                        }}>
                                     <Icon name='pencil'></Icon>
+
                                </Link>
+                               <Link onClick={()=> deleteAppointment(d.id)}> 
+                                    <Icon name='trash' ></Icon>   
+                                </Link>                            
                             </Table.Cell>
                         </Table.Row>
                     ))}
